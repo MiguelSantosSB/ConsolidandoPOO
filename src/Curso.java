@@ -1,6 +1,7 @@
 public class Curso extends Conteudo{
 
     private int cargaHoraria;
+    private Instrutor instrutor;
 
     @Override
     public double calcularXp() {
@@ -13,5 +14,13 @@ public class Curso extends Conteudo{
 
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public Instrutor getInstrutor() {
+        return instrutor;
+    }
+
+    public void setInstrutor(Instrutor instrutor) {
+        this.instrutor = instrutor;
     }
 }

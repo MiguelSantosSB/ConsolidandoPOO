@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -9,8 +10,13 @@ public class Dev {
     private final Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
-        this.conteudosInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
+        if (LocalDate.now().isAfter(bootcamp.getDataFim())) {
+            System.err.println("Inscrição não pode ser realizada. O Bootcamp já terminou.");
+        } else {
+            this.conteudosInscritos.addAll(bootcamp.getConteudos());
+            bootcamp.getDevsInscritos().add(this);
+            System.out.println("Inscrição no bootcamp "+ bootcamp.getNome()+ " realizado com sucesso.");
+        }
     }
 
     public void  progredir() {

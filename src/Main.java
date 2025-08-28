@@ -3,23 +3,47 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
+    // Criação de um Instrutor
+        Instrutor instrutorJava = new Instrutor();
+        instrutorJava.setNome("Rodrigo");
+        instrutorJava.setEspecialidade("Java e StringBoot");
+
+        Instrutor instrutorMentoria = new Instrutor();
+        instrutorMentoria.setNome("Adriano");
+        instrutorMentoria.setEspecialidade("desenvolvimento de carreiras bem sucedidas.");
+
     // Criação dos cursos e mentorias
         Curso cursoJava = new Curso();
         cursoJava.setTitulo("Java Básico");
         cursoJava.setDescricao("Conceitos inciais do Java.");
         cursoJava.setCargaHoraria(11);
+        cursoJava.setInstrutor(instrutorJava);
 
         Curso cursoSpring = new Curso();
         cursoSpring.setTitulo("Spring Framework");
         cursoSpring.setDescricao("Desenvolvimento de APIs com Spring.");
         cursoSpring.setCargaHoraria(6);
+        cursoSpring.setInstrutor(instrutorJava);
 
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("Mentoria de Carreira");
         mentoria.setDescricao("Orientações para o mercado de trabalho.");
         mentoria.setData(LocalDate.of(2025, 9, 12));
+        mentoria.setInstrutor(instrutorMentoria);
 
-    // Criação dos Bootcamps
+    // teste de validação do bootcamp antigo
+        LocalDate date = LocalDate.of(2025, 1, 1);
+        Bootcamp bootcampAntigo = new Bootcamp(date);
+        bootcampAntigo.setNome("Bootcamp Antigo");
+        bootcampAntigo.setDescricao("Bootcamp finalizado");
+        bootcampAntigo.getConteudos().add(cursoJava);
+
+        Dev devMatheus = new Dev();
+        devMatheus.setNome("Matheus");
+        System.out.println("tentativa do matheus em se inscrever em um bootcamp antigo:");
+        devMatheus.inscreverBootcamp(bootcampAntigo);
+
+    // Criação Bootcamp Válido
         LocalDate dataInicioBootcamp = LocalDate.of(2025, 9, 1);
         Bootcamp bootcampJava = new Bootcamp(dataInicioBootcamp);
         bootcampJava.setNome("Bootcamp Java Developer");
